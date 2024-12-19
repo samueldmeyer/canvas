@@ -1870,6 +1870,7 @@ class App extends React.Component {
 
 	propertyListener(data) {
 		// This is an empty callback.  Logging creates a performance issue.
+		console.log("Written by propertyListener: not updated yet");
 	}
 
 	propertyActionHandler(actionId, appData, data) {
@@ -1882,6 +1883,9 @@ class App extends React.Component {
 			const propertyId = { name: data.parameter_ref };
 			let value = propertiesController.getPropertyValue(propertyId);
 			propertiesController.updatePropertyValue(propertyId, value += 1);
+			this.propertyListener = () => {
+				console.log("Written by propertyListener: I was updated");
+			};
 		}
 		if (actionId === "decrement") {
 			const propertyId = { name: data.parameter_ref };
@@ -1982,6 +1986,8 @@ class App extends React.Component {
 
 		const propertiesConfig = this.getPropertiesConfig();
 
+		console.log("Current value of propertyListener during render");
+		console.log(this.propertyListener);
 		const callbacks = {
 			controllerHandler: this.propertiesControllerHandler,
 			propertyListener: this.propertyListener,
