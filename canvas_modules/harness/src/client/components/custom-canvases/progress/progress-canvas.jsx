@@ -84,6 +84,7 @@ export default class ProgressCanvas extends React.Component {
 			enableParentClass: "progress",
 			enableNodeFormatType: "Vertical",
 			enableMarkdownInComments: true,
+			enableKeyboardNavigation: true,
 			tipConfig: {
 				palette: true,
 				nodes: true,
@@ -210,6 +211,11 @@ export default class ProgressCanvas extends React.Component {
 			that.canvasController.setNodeDecorations(modelNode, nodeCompleteDec);
 			that.canvasController.setNodeDecorations(bindingExitNode, nodeCompleteDec);
 		}, 14000);
+
+
+		setTimeout(() => {
+			that.canvasController.setPipelineFlow(that.canvasController.getPipelineFlow());
+		}, 1000);
 	}
 
 	stopProgress() {
