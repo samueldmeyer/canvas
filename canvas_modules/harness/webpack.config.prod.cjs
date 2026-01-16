@@ -23,7 +23,7 @@ const path = require("path");
 const webpack = require("webpack");
 const babelOptions = require("./scripts/babel/babelOptions.cjs");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const constants = require("./lib/constants.js");
+const constants = import("./lib/constants.js");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 // Entry & Output files ------------------------------------------------------------>
